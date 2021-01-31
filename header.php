@@ -5,17 +5,17 @@
 
 <div class="container">
     <div class="header">
-        <img src="logo.jpg" alt="Logo">
+        <img src="img/logo.jpg" alt="Logo">
         <div class="header-right">
             <a class="active" href="main.php">Home</a>
             <a href="products.php">Products</a>
             <a href="contact.php">Contact Us</a>
             <a href="login.php">Login</a>
             <a href="pageone.php">
-                <img src="basket.png" alt="Basket">
+                <img src="img/basket.png" alt="Basket">
             </a>
                 <a href="login.php">
-                    <img src="user.png" alt="User">
+                    <img src="img/user.png" alt="User">
                 </a>
         </div>
     </div>

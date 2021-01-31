@@ -33,8 +33,8 @@ q:after{content:' „'; font-size:26px; line-height:0;}
 div.wrapper{display:block; width:100%; margin:0; padding:0; text-align:left;}
 
 .row1, .row1 a{color:#C0BAB6; background-color:#333333;}
-.row2{color:#979797; background-color:#ffe6e6;}
-.row2 a{color:#FF9900; background-color:#FFFFFF;}
+.row2{color:#979797; background-color:#ffffff;}
+.row2 a{color:#FF9900; background-color:#ffffff;}
 .row3, .row3 a{color:#919191; background-color:#232323;}
 
 

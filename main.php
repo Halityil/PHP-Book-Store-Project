@@ -4,7 +4,7 @@
 <head>
 <title>HSBook</title>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="layout.css" type="text/css">
+<link rel="stylesheet" href="css/layout.css" type="text/css">
 </head>
 <body>
 
@@ -16,22 +16,22 @@
 
 <section id="latest" class="clear">
         <article class="one_quarter">
-          <figure><img src="1.JPEG" width="215" height="315" alt="">
+          <figure><img src="img/1.JPEG" width="215" height="315" alt="">
             <figcaption>New</figcaption>
           </figure>
         </article>
         <article class="one_quarter">
-          <figure><img src="2.JPEG" width="215" height="315" alt="">
+          <figure><img src="img/2.JPEG" width="215" height="315" alt="">
             <figcaption>Featured</figcaption>
           </figure>
         </article>
         <article class="one_quarter">
-          <figure><img src="3.JPEG" width="215" height="315" alt="">
+          <figure><img src="img/3.JPEG" width="215" height="315" alt="">
             <figcaption>Best Seller</figcaption>
           </figure>
         </article>
         <article class="one_quarter lastbox">
-          <figure><img src="4.JPEG" width="215" height="315" alt="">
+          <figure><img src="img/4.JPEG" width="215" height="315" alt="">
             <figcaption>New</figcaption>
           </figure>
         </article>
@@ -44,7 +44,7 @@
        <ul>
          <li>
            <article class="clear">
-              <figure><img src="books.png" alt="">
+              <figure><img src="img/books.png" alt="">
                 <figcaption>
                   <h2>Checkout Our Collection</h2>
                   <p>Our collection of books includes thousand of books from thousands of authors to see our all products click <a href="products.php" title="Best Products">HERE!</p>
@@ -53,10 +53,10 @@
               </figure>
             </article>
           </li>
-
+           </a>
           <li class="last">
             <article class="clear">
-              <figure><img src="6.jpg" alt="">
+              <figure><img src="img/6.jpg" alt="">
                 <figcaption>
                   <h2>Reward Winning Website</h2>
                   <p>HSBook Store has been selected as the widest number of collection and the most reliable online book store in 2020 So you can be sure that you are in safe hands while buying from us!</p>
@@ -75,7 +75,7 @@
         <br>
         <br>
         <br>
-
+        </a>
       <h6 class="title">Follow Us On Our Social Medias</h6>
       <nav>
         <ul>
@@ -93,6 +93,7 @@
 
 
 </body>
+
 </html>
 
 <?php include 'footer.php';?>
