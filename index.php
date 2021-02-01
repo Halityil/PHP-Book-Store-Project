@@ -1,64 +1,109 @@
 <?php
-include 'classes/User.php';
+
 session_start();
-if (!empty($_SESSION['loginInfo'])){
-    header('Location: index.php');
+if (!isset($_SESSION['loginInfo'])){
+    header('Location: login.php');
 }
-if(isset($_POST['submit']) && !empty($_POST['email']) && !empty($_POST['password'])){
-    //get from db
-    $user = new \classes\User();
-    $userDetails = $user->loginUser($_POST['email'],$_POST['password']);
-    //create session
-    if($userDetails){
-        $_SESSION['loginInfo'] = $userDetails;
-        header('Location: index.php');
-    }
-    else echo "Wrong email or password";
 
-}
-else{
-    if(isset($_POST['submit']) && (empty($_POST['email']) || empty($_POST['password']))){
-        echo "<span style='color: red'>pls dont make it empty</span>";
-    }
-    ?>
-
-    <form class="form-horizontal" method="post" action="#">
+include 'header.php'; ?>
+    <!DOCTYPE html>
+    <html lang="en" dir="ltr">
+    <head>
+        <title>HSBook</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/layout.css" type="text/css">
+    </head>
+    <body>
 
 
-        <div class="form-group">
-            <label for="email" class="cols-sm-2 control-label">Your Email</label>
-            <div class="cols-sm-10">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                    <input type="text" class="form-control" name="email" id="email" placeholder="Enter your Email" />
+    <div class="wrapper row2">
+        <div id="container" class="clear">
+
+            <div id="homepage">
+
+                <section id="latest" class="clear">
+                    <article class="one_quarter">
+                        <figure><img src="img/1.JPEG" width="215" height="315" alt="">
+                            <figcaption>New</figcaption>
+                        </figure>
+                    </article>
+                    <article class="one_quarter">
+                        <figure><img src="img/2.JPEG" width="215" height="315" alt="">
+                            <figcaption>Featured</figcaption>
+                        </figure>
+                    </article>
+                    <article class="one_quarter">
+                        <figure><img src="img/3.JPEG" width="215" height="315" alt="">
+                            <figcaption>Best Seller</figcaption>
+                        </figure>
+                    </article>
+                    <article class="one_quarter lastbox">
+                        <figure><img src="img/4.JPEG" width="215" height="315" alt="">
+                            <figcaption>New</figcaption>
+                        </figure>
+                    </article>
+                </section>
+
+
+                <div id="content">
+                    <section id="services" class="last clear">
+                        <ul>
+                            <li>
+                                <article class="clear">
+                                    <figure><img src="img/books.png" alt="">
+                                        <figcaption>
+                                            <h2>Checkout Our Collection</h2>
+                                            <p>Our collection of books includes thousand of books from thousands of
+                                                authors to see our all products click <a href="products.php"
+                                                                                         title="Best Products">HERE!</a>
+                                            </p>
+
+                                        </figcaption>
+                                    </figure>
+                                </article>
+                            </li>
+
+                            <li class="last">
+                                <article class="clear">
+                                    <figure><img src="img/6.jpg" alt="">
+                                        <figcaption>
+                                            <h2>Reward Winning Website</h2>
+                                            <p>HSBook Store has been selected as the widest number of collection and the
+                                                most reliable online book store in 2020 So you can be sure that you are
+                                                in safe hands while buying from us!</p>
+                                        </figcaption>
+                                    </figure>
+                                </article>
+                            </li>
+                        </ul>
+                    </section>
                 </div>
+
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+
+                <h6 class="title">Follow Us On Our Social Medias</h6>
+                <nav>
+                    <ul>
+                        <li><a href="https://www.facebook.com">Facebook</a></li>
+                        <li><a href="https://www.instagram.com/Tower-PCs/ROG-Strix-GA15-G15DH/">Instagram</a></li>
+                        <li><a href="https://www.twitter.com/Laptops/ASUS-TUF-Gaming-FX505DY/">Twitter</a></li>
+                        <li><a href="https://www.pinterest.com/Gaming-Networking/Gaming-Router-Home/">Pinterest</a></li>
+                    </ul>
+                </nav>
+
+
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="password" class="cols-sm-2 control-label">Password</label>
-            <div class="cols-sm-10">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                    <input type="password" class="form-control" name="password" id="password" placeholder="Enter your Password" />
-                </div>
-            </div>
-        </div>
 
-        <div class="form-group ">
-            <br>
-            <input type="submit" class="btn btn-primary btn-lg btn-block login-button" name="submit" value="login">
-        </div>
-        <div class="login-register">
-            <a href="register.php">Register</a>
-        </div>
-    </form>
-    <a href="#">forgot pass</a> <br>
-    <a href="#">register</a>
-    <?php
-}
-?>
+    </body>
 
+    </html>
 
-
-
+<?php include 'footer.php'; ?>

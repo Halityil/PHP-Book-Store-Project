@@ -8,10 +8,10 @@
 <?php
 include 'classes/User.php';
 session_start();
-if (!empty($_SESSION['loginInfo'])){
+if (isset($_SESSION['loginInfo'])){
     header('Location: index.php');
 }
-if(isset($_POST['submit']) && !empty($_POST['email']) && !empty($_POST['password'])){
+if(isset($_POST['submit'])){
     //get from db
     $user = new \classes\User();
     $userDetails = $user->loginUser($_POST['email'],$_POST['password']);
@@ -22,12 +22,7 @@ if(isset($_POST['submit']) && !empty($_POST['email']) && !empty($_POST['password
     }
     else echo "Wrong email or password";
 
-}
-else{
-    if(isset($_POST['submit']) && (empty($_POST['email']) || empty($_POST['password']))){
-        echo "<span style='color: red'>pls dont make it empty</span>";
-    }
-    ?>
+} else {?>
 
     <div class="container">
         <div class="row justify-content-center">
@@ -36,7 +31,7 @@ else{
                     <div class="card-header">Login</div>
                     <div class="card-body">
 
-                        <form class="form-horizontal" method="post" action="#">
+                        <form class="form-horizontal" method="post" action="" name="login">
 
 
                             <div class="form-group">
@@ -77,7 +72,30 @@ else{
     <?php
 }
 ?>
-
+<script>
+    $(function () {
+        $("form[name='login']").validate({
+            rules: {
+                email: {
+                    required: true,
+                    email: true
+                },
+                password: {
+                    required: true,
+                },
+            },
+            messages: {
+                password: {
+                    required: "Please provide a password",
+                },
+                email: "Please enter a valid email address"
+            },
+            submitHandler: function (form) {
+                form.submit();
+            }
+        });
+    });
+</script>
 <?php include 'footer.php';?>
 
 

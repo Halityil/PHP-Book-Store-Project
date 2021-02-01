@@ -7,14 +7,19 @@
     <div class="header">
         <img src="img/logo.jpg" alt="Logo">
         <div class="header-right">
-            <a class="active" href="main.php">Home</a>
+            <a class="active" href="index.php">Home</a>
             <a href="products.php">Products</a>
             <a href="contact.php">Contact Us</a>
-            <a href="login.php">Login</a>
-            <a href="pageone.php">
+            <?php if(isset($_SESSION['loginInfo'])){?>
+                <a href="logout.php">logout</a>
+            <?php } else{?>
+
+                <a href="login.php">login</a>
+            <?php }?>
+            <a href="#">
                 <img src="img/basket.png" alt="Basket">
             </a>
-                <a href="login.php">
+                <a href="#">
                     <img src="img/user.png" alt="User">
                 </a>
         </div>

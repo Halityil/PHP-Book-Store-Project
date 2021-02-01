@@ -2,10 +2,8 @@
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-
-<?php include 'header.php';?>
-
 <?php
+include 'header.php';
 include 'classes/User.php';
 session_start();
 if (!empty($_SESSION['loginInfo'])) {
@@ -13,8 +11,29 @@ if (!empty($_SESSION['loginInfo'])) {
 }
 
 if (isset($_POST['submit'])) {
+    $name = $_POST['name'];
+    $surname = $_POST['surname'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+//    $img = $_FILES['img'];
+
+    $user = new \classes\User();
+    $isLogin = $user->loginUser($email, $password);
     //check if user exists
-    //add to db
+    if ($isLogin) {
+        //nice msg here
+        echo "user exists";
+    } else {
+        //add to db
+        $register = $user->addUser($name, $surname, $email, $password);
+        //nice msg here
+        if($register){
+            echo("registered");
+        }
+        else{
+            echo("error in sql");
+        }
+    }
 
 
 } else {
@@ -34,7 +53,8 @@ if (isset($_POST['submit'])) {
                                 <div class="cols-sm-10">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                        <input type="text" class="form-control" name="name" id="name" placeholder="Enter your Name" />
+                                        <input type="text" class="form-control" name="name" id="name"
+                                               placeholder="Enter your Name"/>
                                     </div>
                                 </div>
                             </div>
@@ -43,7 +63,8 @@ if (isset($_POST['submit'])) {
                                 <div class="cols-sm-10">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                        <input type="text" class="form-control" name="surname" id="surname" placeholder="Enter your Surname" />
+                                        <input type="text" class="form-control" name="surname" id="surname"
+                                               placeholder="Enter your Surname"/>
                                     </div>
                                 </div>
                             </div>
@@ -52,8 +73,10 @@ if (isset($_POST['submit'])) {
                                 <label for="email" class="cols-sm-2 control-label">Your Email</label>
                                 <div class="cols-sm-10">
                                     <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                                        <input type="text" class="form-control" name="email" id="email" placeholder="Enter your Email" />
+                                        <span class="input-group-addon"><i class="fa fa-envelope fa"
+                                                                           aria-hidden="true"></i></span>
+                                        <input type="text" class="form-control" name="email" id="email"
+                                               placeholder="Enter your Email"/>
                                     </div>
                                 </div>
                             </div>
@@ -62,8 +85,10 @@ if (isset($_POST['submit'])) {
                                 <label for="password" class="cols-sm-2 control-label">Password</label>
                                 <div class="cols-sm-10">
                                     <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                        <input type="password" class="form-control" name="password" id="password" placeholder="Enter your Password" />
+                                        <span class="input-group-addon"><i class="fa fa-lock fa-lg"
+                                                                           aria-hidden="true"></i></span>
+                                        <input type="password" class="form-control" name="password" id="password"
+                                               placeholder="Enter your Password"/>
                                     </div>
                                 </div>
                             </div>
@@ -71,21 +96,23 @@ if (isset($_POST['submit'])) {
                                 <label for="password2" class="cols-sm-2 control-label">Confirm Password</label>
                                 <div class="cols-sm-10">
                                     <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                        <input type="password" class="form-control" name="password2" id="password2" placeholder="Confirm your Password" />
+                                        <span class="input-group-addon"><i class="fa fa-lock fa-lg"
+                                                                           aria-hidden="true"></i></span>
+                                        <input type="password" class="form-control" name="password2" id="password2"
+                                               placeholder="Confirm your Password"/>
                                     </div>
                                 </div>
                                 <br>
-                                <div>
-                                    <input type="radio" id="Male" name="drone" value="Male"
-                                           checked>
-                                    <label for="Male">Male</label>
-                                </div>
-
-                                <div>
-                                    <input type="radio" id="Female" name="drone" value="Female">
-                                    <label for="Female">Female</label>
-                                </div>
+                                <!--                                <div>-->
+                                <!--                                    <input type="radio" id="Male" name="drone" value="Male"-->
+                                <!--                                           checked>-->
+                                <!--                                    <label for="Male">Male</label>-->
+                                <!--                                </div>-->
+                                <!---->
+                                <!--                                <div>-->
+                                <!--                                    <input type="radio" id="Female" name="drone" value="Female">-->
+                                <!--                                    <label for="Female">Female</label>-->
+                                <!--                                </div>-->
 
                                 <br>
                                 <label for="img">Select image:</label>
@@ -95,7 +122,8 @@ if (isset($_POST['submit'])) {
 
                                 <div class="form-group ">
                                     <br>
-                                    <input type="submit" class="btn btn-primary btn-lg btn-block login-button" name="submit" value="Register">
+                                    <input type="submit" class="btn btn-primary btn-lg btn-block login-button"
+                                           name="submit" value="Register">
                                 </div>
                                 <div class="login-register">
                                     <a href="login.php">Login</a>
@@ -127,8 +155,8 @@ if (isset($_POST['submit'])) {
                     required: true,
                     minlength: 5
                 },
-                password2 : {
-                    equalTo : "#password"
+                password2: {
+                    equalTo: "#password"
                 }
             },
             messages: {
@@ -150,6 +178,6 @@ if (isset($_POST['submit'])) {
     });
 </script>
 
-<?php include 'footer.php';?>
+<?php include 'footer.php'; ?>
 
 
