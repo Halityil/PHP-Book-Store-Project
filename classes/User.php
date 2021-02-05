@@ -16,7 +16,7 @@ class User extends Config
 
     public function getAllUser()
     {
-        $query = "SELECT * FROM products";
+        $query = "SELECT * FROM users";
         $result = $this->mysqli->query($query);
 
         $array = [];

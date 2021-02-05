@@ -7,6 +7,10 @@
     <div class="header">
         <img src="img/logo.jpg" alt="Logo">
         <div class="header-right">
+            <?php if(isset($_SESSION['loginInfo'])){
+            }?>
+            <a href="addProduct.php">add product</a>
+            <?php ?>
             <a class="active" href="index.php">Home</a>
             <a href="products.php">Products</a>
             <a href="contact.php">Contact Us</a>
