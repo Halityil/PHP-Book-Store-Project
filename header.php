@@ -13,7 +13,7 @@
             <a class="active" href="index.php">Home</a>
             <a href="products.php">Products</a>
             <?php if (isset($_SESSION['loginInfo']) && $_SESSION['loginInfo']['is_admin']) {
-                ?><a href="#">Add Users</a>
+                ?><a href="allUsers.php">All Users</a>
             <?php } ?>
 
             <a href="contact.php">Contact Us</a>
