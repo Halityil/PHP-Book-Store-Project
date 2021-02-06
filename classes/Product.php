@@ -31,7 +31,7 @@ class Product extends Config
         return $result->fetch_assoc();
     }
 
-    public function addProduct($title,$price,$des,$type,$author,$year){
+    public function addProduct($title,$price,$des,$type,$author,$year,$image){
         $title = $this->mysqli->real_escape_string($title);
         $price = $this->mysqli->real_escape_string($price);
         $des = $this->mysqli->real_escape_string($des);
@@ -39,8 +39,8 @@ class Product extends Config
         $author = $this->mysqli->real_escape_string($author);
         $year = $this->mysqli->real_escape_string($year);
 
-        $query = "INSERT INTO products (title, price, des, type, author, year)   
-                                VALUES ('$title', '$price', '$des', '$type', '$author', '$year')";
+        $query = "INSERT INTO products (title, price, des, type, author, year, image)   
+                                VALUES ('$title', '$price', '$des', '$type', '$author', '$year', '$image')";
 
         $result = $this->mysqli->query($query);
 

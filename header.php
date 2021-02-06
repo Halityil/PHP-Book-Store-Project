@@ -1,3 +1,5 @@
+<?php session_start();?>
+
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -7,26 +9,24 @@
     <div class="header">
         <img src="img/logo.jpg" alt="Logo">
         <div class="header-right">
-            <?php if(isset($_SESSION['loginInfo'])){
-            }?>
 
-            <?php ?>
             <a class="active" href="index.php">Home</a>
             <a href="products.php">Products</a>
-            <a href="addProduct.php">Add Products</a>
-            <a href="editProduct.php.php">Edit Products</a>
+            <?php if (isset($_SESSION['loginInfo']) && $_SESSION['loginInfo']['is_admin']) {
+                ?><a href="#">Add Users</a>
+            <?php } ?>
 
             <a href="contact.php">Contact Us</a>
-            <?php if(isset($_SESSION['loginInfo'])){?>
+            <?php if (isset($_SESSION['loginInfo'])) { ?>
                 <a href="logout.php">logout</a>
-            <?php } else{?>
-
-                <a href="login.php">login</a>
-            <?php }?>
-
-                <a href="editUser.php">
+                <a href="editUser.php?id=<?=$_SESSION['loginInfo']['id'] ?>">
                     <img src="img/user.png" alt="User">
                 </a>
+            <?php } else { ?>
+                <a href="login.php">login</a>
+            <?php } ?>
+
+
         </div>
     </div>
 </div>

@@ -3,7 +3,7 @@
 
 <?php
 include 'classes/User.php';
-session_start();
+
 if (isset($_SESSION['loginInfo'])){
     header('Location: index.php');
 }

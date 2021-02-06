@@ -11,7 +11,22 @@ if (isset($_POST['submit'])) {
     $author = $_POST['author'];
     $year = $_POST['year'];
 
-    $result = $product->addProduct($title, $price, $des, $type, $author, $year);
+    //upload image
+    $target_dir = "productPhotos/";
+    //get time as an int to create unique id for each user
+    $time = round(microtime(true));
+    $filename = $time . "." . pathinfo($_FILES["img"]["name"], PATHINFO_EXTENSION);
+    $target_file = $target_dir . $filename;
+
+    //check before upload file if its image
+    $check = getimagesize($_FILES["img"]["tmp_name"]);
+    if($check){
+        move_uploaded_file($_FILES["img"]["tmp_name"], $target_file);
+    }else{
+         $filename = "";
+    }
+
+    $result = $product->addProduct($title, $price, $des, $type, $author, $year, $filename);
     if ($result) {
         echo "Added";
     } else {
@@ -25,13 +40,14 @@ if (isset($_POST['submit'])) {
     <Br>
     <Br>
 
-    <form method="post" action="">
+    <form method="post" action="" enctype="multipart/form-data">
         <input type="text" name="title"> Title of Book
         <input type="number" name="price"> Price of Book
         <input type="text" name="des"> Description of Book
         <input type="text" name="type"> Type of Book
         <input type="text" name="author"> Author Name
         <input type="number" name="year"> Year of Release
+        <input type="file" name="img"> image
         <input type="submit" name="submit" value="Add to Database">
 
     </form>

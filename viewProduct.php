@@ -1,25 +1,20 @@
-<?php include 'header.php';?>
-<?php
-
+<?php include 'header.php';
 include "classes/Product.php";
 $product = new \classes\Product();
 
-public function getProduct($id){
-        $query = "SELECT * FROM products where id = ".$id;
-        $result = $this->mysqli->query($query);
-
-        return $result->fetch_assoc();
-    }
-
-    $result = $_GET[$'$id']("SELECT * FROM example WHERE id='$id'");
-while ($row = mysql_fetch_assoc($result)) {
-    echo ($row['title'] == $id) ? $row['title'] : '';
-    echo ($row['price'] == $id) ? $row['price'] : '';
-    echo ($row['des'] == $id) ? $row['des'] : '';
-    echo ($row['type'] == $id) ? $row['type'] : '';
-    echo ($row['author'] == $id) ? $row['author'] : '';
-    echo ($row['year'] == $id) ? $row['year'] : '';
+if(!isset($_GET['id'])){
+    header('Location: products.php');
 }
+$id = $_GET['id'];
+$item = $product->getProduct($id);
+
+
+//    echo $item['title'];
+//    echo $item['price'];
+//    echo $item['des'];
+//    echo $item['type'];
+//    echo $item['author'];
+//    echo $item['year'];
 
 ?>
 <head>
@@ -39,9 +34,9 @@ while ($row = mysql_fetch_assoc($result)) {
 
             <li id="home"><span class="header"></span>
             	<div class="inner">
-                	<h2>Free Template, Metallic Slider</h2>
-                    <p><em>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum blandit semper commodo. Nunc pretium, nibh in dapibus tristique, felis lectus cursus arcu, quis rutrum odio odio eu sem. Aliquam metus magna, eleifend in lacinia sed, dictum sed lorem. </em></p>
-                	<img src="images/tooplate_image_01.jpg" alt="Image 01" class="image_fl" />
+                	<h2><?= $item['title'] ?></h2>
+                    <p><em> <?= $item['des']?></em></p>
+                    <img src="img/1.JPEG" alt="Image 01" class="image_fl" />
 
 
 

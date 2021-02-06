@@ -31,6 +31,7 @@ class User extends Config
     {
         $query = "SELECT * FROM users where id = '$id'";
         $result = $this->mysqli->query($query);
+        return $result->fetch_assoc();
     }
 
     //get user by email and password
@@ -78,14 +79,14 @@ class User extends Config
 
     }
 
-    public function addUser($name, $surname, $email, $password, $img = "1.png")
+    public function addUser($name, $surname, $email, $password, $image)
     {
         $name = $this->mysqli->real_escape_string($name);
         $surname = $this->mysqli->real_escape_string($surname);
         $email = $this->mysqli->real_escape_string($email);
         $password = $this->mysqli->real_escape_string($password);
-        $query = "INSERT INTO users (name, surname, email, password)   
-                                VALUES ('$name', '$surname', '$email', '$password')";
+        $query = "INSERT INTO users (name, surname, email, password, image)   
+                                VALUES ('$name', '$surname', '$email', '$password' , '$image')";
 
         $result = $this->mysqli->query($query);
 

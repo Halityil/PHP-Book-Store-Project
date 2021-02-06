@@ -1,11 +1,10 @@
 <?php
-
-session_start();
+include 'header.php';
 if (!isset($_SESSION['loginInfo'])){
     header('Location: login.php');
 }
 
-include 'header.php'; ?>
+ ?>
     <!DOCTYPE html>
     <html lang="en" dir="ltr">
     <head>

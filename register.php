@@ -1,10 +1,7 @@
 
 <?php
 include 'header.php';
-
 include 'classes/User.php';
-
-session_start();
 if (!empty($_SESSION['loginInfo'])) {
     header('Location: index.php');
 }
@@ -23,8 +20,23 @@ if (isset($_POST['submit'])) {
         //nice msg here
         echo "user exists";
     } else {
+        //upload image
+        $target_dir = "userPhotos/";
+        //get time as an int to create unique id for each user
+        $time = round(microtime(true));
+        $filename = $time . "." . pathinfo($_FILES["img"]["name"], PATHINFO_EXTENSION);
+        $target_file = $target_dir . $filename;
+
+        //check before upload file if its image
+        $check = getimagesize($_FILES["img"]["tmp_name"]);
+        if($check){
+            move_uploaded_file($_FILES["img"]["tmp_name"], $target_file);
+        }else{
+            $filename = "";
+        }
+
         //add to db
-        $register = $user->addUser($name, $surname, $email, $password);
+        $register = $user->addUser($name, $surname, $email, $password, $filename);
         //nice msg here
         if($register){
             echo("User Registered");
@@ -45,7 +57,7 @@ if (isset($_POST['submit'])) {
                     <div class="card-header">Register</div>
                     <div class="card-body">
 
-                        <form class="form-horizontal" method="post" action="#">
+                        <form class="form-horizontal" method="post" action="#" enctype="multipart/form-data">
 
                             <div class="form-group">
                                 <label for="name" class="cols-sm-2 control-label">Your Name</label>
@@ -102,23 +114,9 @@ if (isset($_POST['submit'])) {
                                     </div>
                                 </div>
                                 <br>
-                                <!--                                <div>-->
-                                <!--                                    <input type="radio" id="Male" name="drone" value="Male"-->
-                                <!--                                           checked>-->
-                                <!--                                    <label for="Male">Male</label>-->
-                                <!--                                </div>-->
-                                <!---->
-                                <!--                                <div>-->
-                                <!--                                    <input type="radio" id="Female" name="drone" value="Female">-->
-                                <!--                                    <label for="Female">Female</label>-->
-                                <!--                                </div>-->
-
                                 <br>
                                 <label for="img">Select image:</label>
-                                <input type="file" id="img" name="img" accept="image/*">
-                                <input type="submit">
-
-
+                                <input type="file" id="img" name="img">
                                 <div class="form-group ">
                                     <br>
                                     <input type="submit" class="btn btn-primary btn-lg btn-block login-button"
@@ -156,7 +154,8 @@ if (isset($_POST['submit'])) {
                 },
                 password2: {
                     equalTo: "#password"
-                }
+                },
+                img: "required",
             },
             messages: {
                 name: "Please enter your firstname",

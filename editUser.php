@@ -44,7 +44,7 @@ else {
 ?>
     <form method="post" action="">
         <input type="text" name="title" value="<?=$item['name']?>"> User Name
-        <input type="number" name="price" value="<?=$item['surname']?>"> User Surname
+        <input type="text" name="price" value="<?=$item['surname']?>"> User Surname
         <input type="text" name="des" value="<?=$item['email']?>"> User Email
         <input type="text" name="type" value="<?=$item['password']?>"> User Password
 
