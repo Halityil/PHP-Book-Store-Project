@@ -9,10 +9,13 @@
         <div class="header-right">
             <?php if(isset($_SESSION['loginInfo'])){
             }?>
-            <a href="addProduct.php">add product</a>
+
             <?php ?>
             <a class="active" href="index.php">Home</a>
             <a href="products.php">Products</a>
+            <a href="addProduct.php">Add Products</a>
+            <a href="editProduct.php.php">Edit Products</a>
+
             <a href="contact.php">Contact Us</a>
             <?php if(isset($_SESSION['loginInfo'])){?>
                 <a href="logout.php">logout</a>
@@ -20,10 +23,8 @@
 
                 <a href="login.php">login</a>
             <?php }?>
-            <a href="#">
-                <img src="img/basket.png" alt="Basket">
-            </a>
-                <a href="#">
+
+                <a href="editUser.php">
                     <img src="img/user.png" alt="User">
                 </a>
         </div>

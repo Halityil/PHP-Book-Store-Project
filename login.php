@@ -1,7 +1,3 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
 <?php include 'header.php';?>
 
@@ -23,7 +19,9 @@ if(isset($_POST['submit'])){
     else echo "Wrong email or password";
 
 } else {?>
-
+<br>
+    <br>
+    <br>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -96,6 +94,9 @@ if(isset($_POST['submit'])){
         });
     });
 </script>
+<br>
+<br>
+<br>
 <?php include 'footer.php';?>
 
 

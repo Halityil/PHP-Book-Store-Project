@@ -1,0 +1,41 @@
+
+
+body {
+    margin: 0;
+    padding: 0;
+    color: #666464;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 12px;
+    line-height: 1.4em;
+    background-color: #000;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-image: url(../img/back.jpeg)
+}
+
+img {
+    border: #fff 4px solid;
+}
+
+#viewdetails {
+    width: 968px;
+    margin: 0 auto;
+    padding: 100px 0 200px;
+}
+
+.details {
+    list-style: none;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+#detailscontent li .inner {
+    width: 570px;
+    padding: 40px 40px 40px 100px;
+    overflow: hidden;
+}
+
+
+
+

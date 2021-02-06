@@ -31,26 +31,32 @@ class Product extends Config
         return $result->fetch_assoc();
     }
 
-    public function addProduct($title,$price,$des){
+    public function addProduct($title,$price,$des,$type,$author,$year){
         $title = $this->mysqli->real_escape_string($title);
         $price = $this->mysqli->real_escape_string($price);
         $des = $this->mysqli->real_escape_string($des);
+        $type = $this->mysqli->real_escape_string($type);
+        $author = $this->mysqli->real_escape_string($author);
+        $year = $this->mysqli->real_escape_string($year);
 
-        $query = "INSERT INTO products (title, price, des)   
-                                VALUES ('$title', '$price', '$des')";
+        $query = "INSERT INTO products (title, price, des, type, author, year)   
+                                VALUES ('$title', '$price', '$des', '$type', '$author', '$year')";
 
         $result = $this->mysqli->query($query);
 
         return $result;
 
     }
-    public function editProduct($id,$title,$price,$des){
+    public function editProduct($id,$title,$price,$des,$type,$author,$year){
         $id = $this->mysqli->real_escape_string($id);
         $title = $this->mysqli->real_escape_string($title);
         $price = $this->mysqli->real_escape_string($price);
         $des = $this->mysqli->real_escape_string($des);
+        $type = $this->mysqli->real_escape_string($type);
+        $author = $this->mysqli->real_escape_string($author);
+        $year = $this->mysqli->real_escape_string($year);
 
-        $query = "UPDATE products SET title = '$title' , price = '$price' , des = '$des' where id = ".$id;
+        $query = "UPDATE products SET title = '$title' , price = '$price' , des = '$des' , type = '$type', author = '$author' , year = '$year'  where id = ".$id;
 
         $result = $this->mysqli->query($query);
 

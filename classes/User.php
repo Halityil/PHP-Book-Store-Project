@@ -50,13 +50,31 @@ class User extends Config
         return false;
     }
 
-    public function updateUser($name, $surname, $email, $password, $img = "1.png")
+    public function editUser($id,$name, $surname, $email, $password, $img = "1.png")
     {
+        $id = $this->mysqli->real_escape_string($id);
+        $name = $this->mysqli->real_escape_string($name);
+        $surname = $this->mysqli->real_escape_string($surname);
+        $email = $this->mysqli->real_escape_string($email);
+        $password = $this->mysqli->real_escape_string($password);
+        $img = $this->mysqli->real_escape_string($img);
+
+
+        $query = "UPDATE products SET name = '$name' , surname = '$surname' , email = '$email' , password = '$password', img = '$img' where id = ".$id;
+
+        $result = $this->mysqli->query($query);
+
+        return $result;
 
     }
 
     public function deleteUser($id)
     {
+        $query = "DELETE FROM user where id = ".$id;
+
+        $result = $this->mysqli->query($query);
+
+        return $result;
 
     }
 

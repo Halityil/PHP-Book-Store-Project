@@ -1,10 +1,9 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
 <?php
 include 'header.php';
+
 include 'classes/User.php';
+
 session_start();
 if (!empty($_SESSION['loginInfo'])) {
     header('Location: index.php');
@@ -28,17 +27,17 @@ if (isset($_POST['submit'])) {
         $register = $user->addUser($name, $surname, $email, $password);
         //nice msg here
         if($register){
-            echo("registered");
+            echo("User Registered");
         }
         else{
-            echo("error in sql");
+            echo("Error in sql");
         }
     }
 
 
 } else {
     ?>
-
+<br>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">

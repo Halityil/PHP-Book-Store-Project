@@ -31,7 +31,7 @@ include 'header.php';?>
                             <p class="card-text description"><?= $product['des']?></p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <a href="#" type="button" class="btn btn-sm btn-outline-secondary">View</a>
+                                    <a href="viewProduct.php" type="button" class="btn btn-sm btn-outline-secondary">View</a>
 
                                     <?php if($_SESSION['loginInfo']["is_admin"]){?>
                                     <a href="editProduct.php?id=<?=$product['id']?>" type="button" class="btn btn-sm btn-outline-secondary">Edit</a>
