@@ -51,7 +51,7 @@ class User extends Config
         return false;
     }
 
-    public function editUser($id,$name, $surname, $email, $password, $img = "1.png")
+    public function editUser($id,$name, $surname, $email, $password, $img)
     {
         $id = $this->mysqli->real_escape_string($id);
         $name = $this->mysqli->real_escape_string($name);
@@ -61,7 +61,7 @@ class User extends Config
         $img = $this->mysqli->real_escape_string($img);
 
 
-        $query = "UPDATE products SET name = '$name' , surname = '$surname' , email = '$email' , password = '$password', img = '$img' where id = ".$id;
+        $query = "UPDATE users SET name = '$name' , surname = '$surname' , email = '$email' , password = '$password', image = '$img' where id = ".$id;
 
         $result = $this->mysqli->query($query);
 

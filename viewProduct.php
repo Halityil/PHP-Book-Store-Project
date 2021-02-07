@@ -36,7 +36,7 @@ $item = $product->getProduct($id);
             	<div class="inner">
                 	<h2><?= $item['title'] ?></h2>
                     <p><em> <?= $item['des']?></em></p>
-                    <img src="img/1.JPEG" alt="Image 01" class="image_fl" />
+                    <img src="productPhotos/<?=$item['image']?>" alt="Image 01" style="width: 300px;" class="image_fl" />
 
 
 

@@ -8,7 +8,9 @@ $allUsers = $user->getAllUser();
 
 ?>
 
-<table>
+<div class="container">
+
+<table class="table">
     <tr>
         <td>id</td>
         <td>name</td>
@@ -29,3 +31,4 @@ $allUsers = $user->getAllUser();
         </tr>
     <?php }?>
 </table>
+</div>

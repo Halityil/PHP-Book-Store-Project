@@ -47,7 +47,7 @@ class Product extends Config
         return $result;
 
     }
-    public function editProduct($id,$title,$price,$des,$type,$author,$year){
+    public function editProduct($id,$title,$price,$des,$type,$author,$year,$img){
         $id = $this->mysqli->real_escape_string($id);
         $title = $this->mysqli->real_escape_string($title);
         $price = $this->mysqli->real_escape_string($price);
@@ -56,7 +56,7 @@ class Product extends Config
         $author = $this->mysqli->real_escape_string($author);
         $year = $this->mysqli->real_escape_string($year);
 
-        $query = "UPDATE products SET title = '$title' , price = '$price' , des = '$des' , type = '$type', author = '$author' , year = '$year'  where id = ".$id;
+        $query = "UPDATE products SET title = '$title' , price = '$price' , des = '$des' , type = '$type', author = '$author' , year = '$year' , image = '$img'  where id = ".$id;
 
         $result = $this->mysqli->query($query);
 

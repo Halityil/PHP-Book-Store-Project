@@ -1,10 +1,16 @@
 <?php
 include 'header.php';
+include 'classes/Product.php';
 if (!isset($_SESSION['loginInfo'])){
     header('Location: login.php');
 }
 
- ?>
+
+$product = new \classes\Product();
+
+    $items = $product->getAllProducts();
+
+?>
     <!DOCTYPE html>
     <html lang="en" dir="ltr">
     <head>
@@ -21,28 +27,19 @@ if (!isset($_SESSION['loginInfo'])){
             <div id="homepage">
 
                 <section id="latest" class="clear">
-                    <article class="one_quarter">
-                        <figure><img src="img/1.JPEG" width="215" height="315" alt="">
-                            <figcaption>New</figcaption>
-                        </figure>
-                    </article>
-                    <article class="one_quarter">
-                        <figure><img src="img/2.JPEG" width="215" height="315" alt="">
-                            <figcaption>Featured</figcaption>
-                        </figure>
-                    </article>
-                    <article class="one_quarter">
-                        <figure><img src="img/3.JPEG" width="215" height="315" alt="">
-                            <figcaption>Best Seller</figcaption>
-                        </figure>
-                    </article>
-                    <article class="one_quarter lastbox">
-                        <figure><img src="img/4.JPEG" width="215" height="315" alt="">
-                            <figcaption>New</figcaption>
-                        </figure>
-                    </article>
-                </section>
 
+                    <?php for ($i = 1; $i <= 4; $i++) { ?>
+                        <article class="one_quarter lastbox">
+                            <figure>
+                                <a href="viewProduct.php?id=<?= $items[$i]['id']?>">
+                                <img src="productPhotos/<?=$items[$i]['image']?>" width="215" height="315" alt="">
+                                </a>
+                                <figcaption><?= $items[$i]['title']?></figcaption>
+                            </figure>
+                        </article>
+                    <?php } ?>
+
+                </section>
 
                 <div id="content">
                     <section id="services" class="last clear">

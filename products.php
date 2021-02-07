@@ -20,14 +20,14 @@ if (!isset($_SESSION['loginInfo'])){
         <div class="container">
 
             <?php if (isset($_SESSION['loginInfo']) && $_SESSION['loginInfo']['is_admin']) {
-                ?><a href="addProduct.php">Add Products</a>
+                ?><a class="btn btn-success" href="addProduct.php">Add Products</a>
             <?php } ?>
 
             <div class="row">
                 <?php foreach ($allProducts as $product){?>
                 <div class="col-md-4">
                     <div class="card mb-4 box-shadow">
-                        <img class="card-img-top"
+                        <img class="card-img-top" style="height: 400px"
                              src="productPhotos/<?=($product['image']) ? $product['image'] : 'default.png' ?>"
                              data-holder-rendered="true">
                         <div class="card-body">
